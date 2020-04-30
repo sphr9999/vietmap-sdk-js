@@ -1,6 +1,6 @@
 {
   "name": "vietmap-sdk",
-  "version": "0.10.0",
+  "version": "1.0.3",
   "description": "JS SDK for accessing Mapbox APIs",
   "main": "index.js",
   "files": [

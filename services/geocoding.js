@@ -92,7 +92,7 @@ var featureTypes = [
 Geocoding.forwardGeocode = function(config) {
   v.assertShape({
     query: v.required(v.string),
-    mode: v.oneOf('mapbox.places', 'mapbox.places-permanent'),
+    mode: v.oneOf('search', 'search-permanent'),
     countries: v.arrayOf(v.string),
     proximity: v.coordinates,
     types: v.arrayOf(v.oneOf(featureTypes)),
@@ -103,7 +103,7 @@ Geocoding.forwardGeocode = function(config) {
     routing: v.boolean
   })(config);
 
-  config.mode = config.mode || 'mapbox.places';
+  config.mode = config.mode || 'search';
 
   var query = stringifyBooleans(
     xtend(
@@ -122,7 +122,7 @@ Geocoding.forwardGeocode = function(config) {
 
   return this.client.createRequest({
     method: 'GET',
-    path: '/geocoding/v5/:mode/:query.json',
+    path: '/geocoding/:mode/:query.json',
     params: pick(config, ['mode', 'query']),
     query: query
   });
@@ -161,7 +161,7 @@ Geocoding.forwardGeocode = function(config) {
 Geocoding.reverseGeocode = function(config) {
   v.assertShape({
     query: v.required(v.coordinates),
-    mode: v.oneOf('mapbox.places', 'mapbox.places-permanent'),
+    mode: v.oneOf('search', 'search-permanent'),
     countries: v.arrayOf(v.string),
     types: v.arrayOf(v.oneOf(featureTypes)),
     bbox: v.arrayOf(v.number),
@@ -171,7 +171,7 @@ Geocoding.reverseGeocode = function(config) {
     routing: v.boolean
   })(config);
 
-  config.mode = config.mode || 'mapbox.places';
+  config.mode = config.mode || 'search';
 
   var query = stringifyBooleans(
     xtend(
