@@ -122,7 +122,8 @@ Geocoding.forwardGeocode = function(config) {
 
   return this.client.createRequest({
     method: 'GET',
-    path: '/geocoding/:mode/:query.json',
+    // path: '/geocoding/:mode/:query.json',
+    path: '/geocoding/:query.json',
     params: pick(config, ['mode', 'query']),
     query: query
   });
@@ -190,7 +191,8 @@ Geocoding.reverseGeocode = function(config) {
 
   return this.client.createRequest({
     method: 'GET',
-    path: '/geocoding/v5/:mode/:query.json',
+    // path: '/geocoding/v5/:mode/:query.json',
+    path: '/reverse-geocoding/:query.json',
     params: pick(config, ['mode', 'query']),
     query: query
   });
