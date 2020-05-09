@@ -123,7 +123,7 @@ Geocoding.forwardGeocode = function(config) {
   return this.client.createRequest({
     method: 'GET',
     // path: '/geocoding/:mode/:query.json',
-    path: '/geocoders/:query.json',
+    path: '/geocoders/q/:query.json',
     params: pick(config, ['mode', 'query']),
     query: query
   });
